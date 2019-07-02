@@ -26,30 +26,15 @@
                                 <value xml:lang="en">Select ruby format and copy</value>
                                 <value xml:lang="ja">ルビの形式を選択してコピー</value>
                             </prop>
+                            <prop oor:name="URL" oor:type="xs:string">
+                                <value>service:io.github.hallelujahdrive.rubyformatter?execute</value>
+                            </prop>
                             <prop oor:name="Target" oor:type="xs:string">
                                 <value>_self</value>
                             </prop>
                             <prop oor:name="ImageIdentifier" oor:type="xs:string">
                                 <value/>
                             </prop>
-                            <node oor:name="Submenu">
-                                <node oor:name="m1" oor:op="replace">
-                                    <prop oor:name="URL" oor:type="xs:string">
-                                        <value>service:io.github.hallelujahdrive.rubyformatter?execute</value>
-                                    </prop>
-                                    <prop oor:name="Title" oor:type="xs:string">
-                                        <value/>
-                                        <value xml:lang="en">Kari</value>
-                                        <value xml:lang="ja">仮</value>
-                                    </prop>
-                                    <prop oor:name="Target" oor:type="xs:string">
-                                        <value>_self</value>
-                                    </prop>
-                                    <prop oor:name="Context" oor:type="xs:string">
-                                        <value/>
-                                    </prop>
-                                </node>
-                            </node>
                         </node>
                     </node>
                 </node>
