@@ -1,0 +1,1 @@
+Ruby Formatter is the extension that formats documents written with ruby text and side points into the format of each novel posting sites and copies them to the clipboard.The text copied to the clipboard can be used as it is by pasting in the editor in each novel posting sites.

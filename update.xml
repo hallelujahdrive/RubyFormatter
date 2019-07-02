@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description xmlns="http://openoffice.org/extensions/update/2006"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<version value="0.1.0" />
+<identifier value="io.github.hallelujahdrive.rubyformatter" />
+ <update-download>
+   <src xlink:href="https://github.com/hallelujahdrive/RubyFormatter/raw/master/RubyFormatter-0.1.0.oxt"/>
+ </update-download>
+</description>

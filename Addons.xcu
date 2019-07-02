@@ -8,6 +8,9 @@
         <node oor:name="OfficeMenuBarMerging">
             <node oor:name="io.github.hallelujahdrive.rubyformatter" oor:op="replace">
                 <node oor:name="S1" oor:op="replace">
+                    <prop oor:name="MergeContext">
+                        <value>com.sun.star.text.TextDocument</value>
+                    </prop>
                     <prop oor:name="MergePoint">
                         <value>.uno:EditMenu\.uno:Copy</value>
                     </prop>
