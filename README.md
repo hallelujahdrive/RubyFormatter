@@ -1,5 +1,5 @@
 # RubyFormatter
-Ruby Formatter is the extension for LibreOffice/Apatch OpenOffice.
+Ruby Formatter is the extension for LibreOffice.
 
 ## Description
 
