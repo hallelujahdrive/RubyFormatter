@@ -8,7 +8,4 @@
     <manifest:file-entry manifest:media-type="application/vnd.sun.star.configuration-data"
                          manifest:full-path="Addons.xcu"/>
 
-    <manifest:file-entry manifest:media-type="application/vnd.sun.star.package-bundle-description"
-                         manifest:full-path="description/title.txt"/>
-
 </manifest:manifest>
