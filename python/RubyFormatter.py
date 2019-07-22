@@ -92,7 +92,6 @@ class TextList(list):
 
 
     def __is_side_points(self, word, ruby_text):
-
         if points_regex.fullmatch(ruby_text) is None:
             return False
 
@@ -104,8 +103,7 @@ class RubyFormatter(unohelper.Base, XJobExecutor):
     def __init__(self, ctx):
         self.ctx = ctx
 
-    def __createDialog(self):
-
+    def __create_dialog(self):
         try:
             translater = gettext.translation(
                 "messages",
@@ -154,8 +152,7 @@ class RubyFormatter(unohelper.Base, XJobExecutor):
 
 
     def trigger(self, args):
-
-        dlg = self.__createDialog()
+        dlg = self.__create_dialog()
         if not dlg.execute() == 1:
             return
 
