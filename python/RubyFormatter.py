@@ -11,9 +11,6 @@ from com.sun.star.datatransfer import DataFlavor
 from com.sun.star.datatransfer import UnsupportedFlavorException
 from com.sun.star.task import XJobExecutor
 
-import logging
-
-#logging.basicConfig(filename="debug.log", level=logging.DEBUG)
 
 # To match Han characters
 han_regex = re.compile("[\u2E80-\u2FDF々〇〻\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\u20000-\u2FFFF]+")
@@ -22,7 +19,7 @@ kana_regex = re.compile("[\u3041-\u308F\u30A1-\u30FA・ー･ｰ]+")
 # To replace Double angle bracket
 dab_regex = re.compile("《")
 
-IMP_NAME = "io.github.hallelujahdrive.rubyformatter.develop"
+IMP_NAME = "io.github.hallelujahdrive.rubyformatter"
 
 KAKUYOMU = 0
 PIXIV = 1

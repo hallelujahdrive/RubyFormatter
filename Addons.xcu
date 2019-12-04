@@ -6,7 +6,7 @@
     <node oor:name="AddonUI">
 
         <node oor:name="OfficeMenuBarMerging">
-            <node oor:name="io.github.hallelujahdrive.rubyformatter.develop" oor:op="replace">
+            <node oor:name="io.github.hallelujahdrive.rubyformatter" oor:op="replace">
                 <node oor:name="S1" oor:op="replace">
                     <prop oor:name="MergeContext">
                         <value>com.sun.star.text.TextDocument</value>
@@ -30,7 +30,7 @@
                                 <value xml:lang="ja">ルビの形式を選択してコピー</value>
                             </prop>
                             <prop oor:name="URL" oor:type="xs:string">
-                                <value>service:io.github.hallelujahdrive.rubyformatter.develop?execute</value>
+                                <value>service:io.github.hallelujahdrive.rubyformatter?execute</value>
                             </prop>
                             <prop oor:name="Target" oor:type="xs:string">
                                 <value>_self</value>

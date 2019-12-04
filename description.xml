@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description xmlns="http://openoffice.org/extensions/description/2006"
   xmlns:xlink="http://www.w3.org/1999/xlink">
-  <identifier value="io.github.hallelujahdrive.rubyformatter.develop"/>
+  <identifier value="io.github.hallelujahdrive.rubyformatter"/>
   <version value="0.2.0"/> 
   <platform value="all"/>
   <extension-description>
@@ -12,7 +12,7 @@
     <name lang="en">Ruby Formatter develop</name>
   </display-name>
   <update-information>
-    <src xlink:href="http://github.com/hallelujahdrive/RubyFormartter" />
+    <src xlink:href="http://github.com/hallelujahdrive/RubyFormatter/raw/master/update.xml" />
   </update-information>
   <registration>
     <simple-license accept-by="user" suppress-if-required="true" suppress-on-update="true">
