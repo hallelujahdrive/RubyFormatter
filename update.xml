@@ -4,6 +4,6 @@
 <version value="0.2.0" />
 <identifier value="io.github.hallelujahdrive.rubyformatter.develop" />
  <update-download>
-   <src xlink:href="https://github.com/hallelujahdrive/RubyFormatter/raw/master/RubyFormatter-0.2.0.oxt"/>
+   <src xlink:href="https://github.com/hallelujahdrive/RubyFormatter/raw/develop/RubyFormatter-0.2.0.oxt"/>
  </update-download>
 </description>

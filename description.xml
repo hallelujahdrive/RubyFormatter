@@ -12,7 +12,7 @@
     <name lang="en">Ruby Formatter develop</name>
   </display-name>
   <update-information>
-    <src xlink:href="http://github.com/hallelujahdrive/RubyFormartter" />
+    <src xlink:href="http://github.com/hallelujahdrive/RubyFormatter/raw/develop/update.xml" />
   </update-information>
   <registration>
     <simple-license accept-by="user" suppress-if-required="true" suppress-on-update="true">
