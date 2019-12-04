@@ -11,17 +11,18 @@ from com.sun.star.datatransfer import DataFlavor
 from com.sun.star.datatransfer import UnsupportedFlavorException
 from com.sun.star.task import XJobExecutor
 
+import logging
+
+#logging.basicConfig(filename="debug.log", level=logging.DEBUG)
+
 # To match Han characters
 han_regex = re.compile("[\u2E80-\u2FDF々〇〻\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF\u20000-\u2FFFF]+")
 # To match Kana characters
 kana_regex = re.compile("[\u3041-\u308F\u30A1-\u30FA・ー･ｰ]+")
-# To match Side points
-points_regex = re.compile("[,.、··•∙⋅・･\s]+")
-point_regex = re.compile("[,.、··•∙⋅・･]")
 # To replace Double angle bracket
 dab_regex = re.compile("《")
 
-IMP_NAME = "io.github.hallelujahdrive.rubyformatter"
+IMP_NAME = "io.github.hallelujahdrive.rubyformatter.develop"
 
 KAKUYOMU = 0
 PIXIV = 1
@@ -43,32 +44,42 @@ class TextList(list):
 
     # Attention:
     # If a ruby text contains "《"　or "》", Kakuyomu and Shousetsuka ni narou viewer do not format the text correctly.
-    def append_word_and_ruby(self, word, ruby_text):
+    def append_word_with_ruby(self, word, ruby_text):
+        if self.format == PIXIV:
+            self.__append_pixiv_ruby(word, ruby_text)
+
+        else:
+            self.__append_word(word)
+            self.__append_ruby(ruby_text)
+
+
+    def append_word_with_emphasis(self, word, char_emphasis):
+        if word is None or word == "":
+            return
+
         if self.format == KAKUYOMU:
-            if self.__is_side_points(word, ruby_text):
-                self.append("《《")
-                self.append(word)
-                self.append("》》")
-            else:
-                self.__append_word(word)
-                self.__append_ruby(ruby_text)
+            self.append("《《")
+            self.append(word)
+            self.append("》》")
 
         elif self.format == PIXIV:
-            self.append("[[rb:")
-            self.append(word)
-            self.append(" > ")
-            self.append(ruby_text)
-            self.append("]]")
+            emphasis = ""
+            if char_emphasis == 1:
+                emphasis = "・"
+            elif char_emphasis == 2:
+                emphasis = "○"
+            elif char_emphasis == 3:
+                emphasis = "●"
+            else:
+                emphasis = "﹅"
+
+            for c in word:
+                self.__append_pixiv_ruby(c, emphasis)
 
         elif self.format == NAROU:
-            if self.__is_side_points(word, ruby_text):
-                for c in word:
-                    self.__append_word(c)
-                    self.__append_ruby("・")
-            
-            else:
-                self.__append_word(word)
-                self.__append_ruby(ruby_text)
+            for c in word:
+                self.__append_word(c)
+                self.__append_ruby("・")
 
 
     def __append_word(self, word):
@@ -81,6 +92,14 @@ class TextList(list):
         self.append("《")
         self.append(ruby_text)
         self.append("》")        
+
+    
+    def __append_pixiv_ruby(self, word, ruby_text):
+        self.append("[[rb:")
+        self.append(word)
+        self.append(" > ")
+        self.append(ruby_text)
+        self.append("]]")
 
 
     def __is_filled_han(self, word):
@@ -133,7 +152,7 @@ class RubyFormatter(unohelper.Base, XJobExecutor):
             ]
 
         dp = self.ctx.ServiceManager.createInstanceWithContext("com.sun.star.awt.DialogProvider", self.ctx)
-        dlg = dp.createDialog("vnd.sun.star.extension://io.github.hallelujahdrive.rubyformatter/dialogs/RubyFormatterDialog.xdl")
+        dlg = dp.createDialog("vnd.sun.star.extension://"+ IMP_NAME + "/dialogs/RubyFormatterDialog.xdl")
         dlg_model = dlg.Model
 
         dlg_model.Title =  _("Select ruby format and copy")
@@ -163,7 +182,7 @@ class RubyFormatter(unohelper.Base, XJobExecutor):
         doc = desktop.getCurrentComponent()
 
         dlg.dispose()
-        
+
         copy_to_clipboard(format_text(doc, selected))
 
 
@@ -203,10 +222,14 @@ def format_text(doc, selected):
         ruby_text = None
         while words_enum.hasMoreElements():
             word_elem = words_enum.nextElement()
-            if ruby_text is None:
-                text.append_word(word_elem.String)
+            char_emphasis = word_elem.CharEmphasis
+            
+            if ruby_text is not None:
+                text.append_word_with_ruby(word_elem.String, ruby_text)
+            elif char_emphasis != 0:
+                text.append_word_with_emphasis(word_elem.String, char_emphasis)
             else:
-                text.append_word_and_ruby(word_elem.String, ruby_text)
+                text.append_word(word_elem.String)
 
             ruby_text = word_elem.RubyText
 
