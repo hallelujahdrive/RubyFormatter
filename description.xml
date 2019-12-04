@@ -9,7 +9,7 @@
     <src xlink:href="descriptions/ja.txt" lang="ja"/>
   </extension-description>
   <display-name>
-    <name lang="en">Ruby Formatter develop</name>
+    <name lang="en">Ruby Formatter</name>
   </display-name>
   <update-information>
     <src xlink:href="http://github.com/hallelujahdrive/RubyFormatter/raw/master/update.xml" />
